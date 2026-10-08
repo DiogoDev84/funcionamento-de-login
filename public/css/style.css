@@ -1,0 +1,67 @@
+/* Comentário em CSS se escreve assim, ente barra-asterisco*/
+/* "body" = o corpo da página inteira */
+body {
+    font-family: Arial, Helvetica, sans-serif; /* tipo de letra */
+    background-color: #f0f2f5;
+    margin: 0; /*O conteúdo "encosta" no canto da tela. O navegador colocava uma margem sozinho*/
+    min-height:100vh;  /*Nada visível!*/
+    display:flex; /*Os elementos podem mudar de arrumação. É o "modo de organizar" a caixa*/
+    justify-content: center; /*A caixa vai para o meio na horizontal ↔️*/
+    align-items: center; /**/    
+}
+.caixa-login {
+    background-color: white; /*A caixa ganha fundo branco e se destaca do cinza*/
+    width: 320px; /*A caixa ganha uma largura fixa (px = pixels, os pontinhos da tela)*/
+    padding: 32px; /*Espaço por dentro da caixa: o conteúdo se afasta das bordas*/
+    border-radius: 8px; /*Os cantos ficam arredondados*/
+    box-shadow:0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.caixa-login label {
+    display:block; /*O momento esperado! Cada rótulo ocupa uma linha inteira, e tudo se organiza na vertical*/
+    margin-bottom: 6px; /**?Um espacinho abaixo de cada rótulo*/
+    color: #555; /*O texto fica cinza escuro, mais suave que o preto*/
+}
+
+.caixa-login input {
+    width: 100%; /*O campo ocupa a largura toda da caixa... e talvez passe da borda! 🤔*/
+    padding:10px; /*O campo fica mais "gordinho" por dentro, e passa ainda mais da borda*/
+    box-sizing: border-box; /*Conserta! O campo volta a caber certinho na caixa*/
+    margin-bottom: 16px; /*Espaço abaixo de cada campo*/
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.caixa-login h1 {
+    text-align: center; /*O título vai para o meio da caixa*/
+    margin-top: 0; /*O título "sobe", tirando um espaço que o navegador colocava em cima*/
+    color:#333; /*Cinza bem escuro, mais suave que o preto puro*/
+}
+
+.caixa-login button {
+    width: 100%; /*O botão ocupa a largura toda*/
+    padding:12px; /*Fica mais alto e fácil de clicar*/
+    background-color:  #e3342f; /*Fundo azul*/
+    color: white; /*O texto do botão fica branco*/
+    border: none; /*Tira a borda cinza que o navegador coloca*/
+    font-size: 16px; /*O texto fica maior*/
+    cursor: pointer; /*Passe o mouse em cima: aparece a mãozinha 👆*/
+}
+
+/* :hover = "QUANDO o mouse estiver em cima, a cor fica mais azul" */
+.caixa-login button:hover {
+    background-color: #cc1f1a;
+}
+
+.erro {
+    background-color: #fdecea;
+    color:#b71c1c;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.erro p {
+    margin: 0; /* tira o espaço extra que o navegador coloca nos parágrafos */
+}
+

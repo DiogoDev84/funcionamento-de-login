@@ -1,58 +1,52 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🔐 Funcionamento de Login
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Projeto de estudo: um sistema de login construído com **Laravel**, seguindo o padrão **MVC**, rodando em **Docker** com banco de dados **MySQL**.
 
-## About Laravel
+O objetivo foi aprender, passo a passo, como um login funciona por dentro e quais cuidados de segurança ele precisa ter.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🛠️ Tecnologias
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- PHP e Laravel
+- Docker com Laravel Sail
+- MySQL (visualizado com DBeaver)
+- WSL / Ubuntu
+- HTML, Blade e CSS
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ Funcionalidades
 
-## Learning Laravel
+- Tela de login com validação dos campos
+- Mensagens de erro exibidas ao usuário
+- Página de painel protegida, acessível somente após o login
+- Logout (sair do sistema)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🔒 Segurança
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Senhas com hash:** a senha nunca é salva como texto no banco, e sim embaralhada com bcrypt
+- **Proteção CSRF:** os formulários levam um código secreto, conferido pelo servidor, que impede envios vindos de sites falsos
+- **Mensagem de erro genérica:** "E-mail ou senha incorretos", sem revelar quais e-mails estão cadastrados
+- **Sessão regenerada no login:** o identificador da sessão é trocado após o login, impedindo o reaproveitamento de sessões antigas
+- **Middleware `auth`:** bloqueia o acesso ao painel de quem não fez login e redireciona para a tela de login
+- **Logout seguro:** feito via POST com CSRF, invalidando a sessão e gerando um novo token
+- **Dados sensíveis fora do repositório:** o arquivo `.env`, com senhas e chaves, não é enviado ao GitHub
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 📁 Arquivos principais
 
-## Agentic Development
+| Arquivo | Responsabilidade |
+|---|---|
+| `routes/web.php` | Define as rotas do sistema |
+| `app/Http/Controllers/LoginController.php` | Mostra o formulário, faz o login e o logout |
+| `resources/views/auth/login.blade.php` | Tela de login |
+| `resources/views/dashboard.blade.php` | Painel protegido |
+| `database/seeders/DatabaseSeeder.php` | Cria o usuário de teste |
+| `public/css/style.css` | Estilo das telas |
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## 🧪 Usuário de teste
 
-```bash
-composer require laravel/boost --dev
+Criado pelo seeder, apenas para uso local:
 
-php artisan boost:install
-```
+- **E-mail:** admin@email.com
+- **Senha:** 12345678
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## 📚 Sobre
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Projeto feito para aprendizado, entendendo cada arquivo e cada etapa, em vez de apenas copiar código.
